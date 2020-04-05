@@ -1,0 +1,15 @@
+
+#!/bin/bash
+
+counter=0
+
+for file in `\find . -maxdepth 1 -name '*.csv'`;
+do
+    echo $file
+    if [ $counter == 0 ]; then
+        cat $file > join_result.csv
+    else
+        sed -e '1d' $file >> result.csv
+    fi
+    counter=`expr $counter + 1`
+done
